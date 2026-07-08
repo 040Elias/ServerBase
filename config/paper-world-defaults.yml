@@ -62,21 +62,21 @@ chunks:
     snowball: -1
   fixed-chunk-inhabited-time: -1
   flush-regions-on-save: false
-  max-auto-save-chunks-per-tick: 32
+  max-auto-save-chunks-per-tick: 24
   prevent-moving-into-unloaded-chunks: true
 collisions:
   allow-player-cramming-damage: false
   allow-vehicle-collisions: true
   fix-climbing-bypassing-cramming-rule: false
   max-entity-collisions: 8
-  only-players-collide: false
+  only-players-collide: true
 command-blocks:
   force-follow-perm-level: true
-  permissions-level: 4
+  permissions-level: 2
 entities:
   armor-stands:
-    do-collision-entity-lookups: false
-    tick: false
+    do-collision-entity-lookups: true
+    tick: true
   behavior:
     allow-spider-world-border-climbing: true
     baby-zombie-movement-modifier: 0.5
@@ -120,10 +120,10 @@ entities:
         per-player: false
     player-insomnia-start-ticks: 72000
     should-remove-dragon: false
-    spawner-nerfed-mobs-should-jump: true
+    spawner-nerfed-mobs-should-jump: false
     stuck-entity-poi-retry-delay: 200
     zombie-villager-infection-chance: default
-    zombies-target-turtle-eggs: false
+    zombies-target-turtle-eggs: true
   markers:
     tick: true
   mob-effects:
@@ -140,7 +140,7 @@ entities:
       enabled: false
       items:
         cobblestone: 300
-    count-all-mobs-for-spawning: true
+    count-all-mobs-for-spawning: false
     creative-arrow-despawn-rate: default
     despawn-range-shape: ELLIPSOID
     despawn-ranges:
@@ -254,7 +254,7 @@ environment:
   void-damage-min-build-height-offset: -64.0
   water-over-lava-flow-speed: 5
 feature-seeds:
-  generate-random-seeds-for-all: true
+  generate-random-seeds-for-all: false
 fishing-time-range:
   maximum: 600
   minimum: 100
@@ -297,7 +297,7 @@ misc:
   max-leash-distance: default
   redstone-implementation: ALTERNATE_CURRENT
   show-sign-click-command-failure-msgs-to-player: false
-  update-pathfinding-on-block-update: true
+  update-pathfinding-on-block-update: false
 scoreboards:
   allow-non-player-entities-on-scoreboards: true
   use-vanilla-world-scoreboard-name-coloring: false
@@ -308,8 +308,8 @@ tick-rates:
     villager:
       validatenearbypoi: -1
   container-update: 1
-  dry-farmland: 1
-  grass-spread: 1
+  dry-farmland: 3
+  grass-spread: 4
   mob-spawner: 1
   sensor:
     villager:

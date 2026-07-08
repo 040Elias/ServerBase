@@ -115,9 +115,9 @@ entities:
    villagers:
       # Whether the server should allow Villagers to load unloaded chunks for Villagers to locate
       # POIs
-      villager-acquire-poi-tasks-load-chunks: true
+      villager-acquire-poi-tasks-load-chunks: false
       reduce-job-site-poi-search-range: true
-      reduce-home-poi-search-range: false
+      reduce-home-poi-search-range: true
       reduce-meeting-point-poi-search-range: true
    experience-orbs-are-fire-resistant: false
 combat:

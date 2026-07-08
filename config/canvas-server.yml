@@ -62,7 +62,6 @@ region-scheduler:
    #  - THROW - Throws an exception, can crash the server. Good for ensuring correctness
    guard-severity: "LOG"
 chunk-system:
-   thread-priority: 5
    # The worldgen processes creates a lot of unnecessary fluid post-processing tasks, which can
    # overload the server and cause stuttering when generating new chunks. Depending on the
    # algorithm chosen, this can help reduce stutter and improve performance when generating
@@ -74,7 +73,7 @@ chunk-system:
    fluid-post-processing-algorithm: "FILTERED"
    # Enabling this turns fluid post processing into a scheduled tick, which hopefully helps to
    # mitigate MSPT spiking issues during chunk generation
-   make-fluid-post-process-scheduled-tick: false
+   make-fluid-post-process-scheduled-tick: true
    optimize-aquifer: true
    use-end-biome-cache: true
    end-biome-cache-size: 1024
@@ -93,22 +92,22 @@ chunk-system:
       deduplicate-shuffled-template-pool-element-list: true
       enable: true
 vanilla-fixes:
-   mc298464: true
-   mc223153: true
-   mc200418: false
-   mc94054: false
-   mc245394: true
-   mc227337: true
-   mc221257: false
-   mc206922: false
-   mc155509: false
-   mc132878: false
-   mc121706: false
-   mc119754: true
-   mc100991: false
-   mc30391: false
-   mc183990: false
-   mc136249: true
+   mc298464: true # Fixes a Memory Leak
+   mc223153: false # Sound Issue with Block of Raw Copper
+   mc200418: false # Baby Villager on Chicken Jockey
+   mc94054: false # (Cave) Spiders spin around when walking
+   mc245394: false # Raid Horns blaring controlled by incorrect sound slider
+   mc227337: false # When a shulker bullet hits an entity, the explosion sound is not played and particles are not produced
+   mc221257: false # Shulker bullets don't produce bubble particles when moving through water
+   mc206922: false # Items dropped by entities that are killed by lightning instantly disappear
+   mc155509: false # Dying puffed pufferfish can still sting players
+   mc132878: false # Armor stands destroyed by explosions/lava/fire don't produce particles
+   mc121706: false # Skeletons and illusioners aren't looking up / down at their target while strafing
+   mc119754: true # Firework boosting on elytra continues in spectator mode
+   mc100991: false # Killing entities with a fishing rod doesn't count as a kill
+   mc30391: false # Chickens, blazes and the wither emit particles when landing from a height, despite falling slowly
+   mc183990: false # Group AI of some mobs breaks when their target dies
+   mc136249: false # Wearing boots enchanted with depth strider decreases the strength of the riptide enchantment
    # There is a Vanilla bug where in-flight pearls are duplicated at shutdown. This fixes that
    # when the option "restoreVanillaEnderPearlBehavior" is enabled alongside this.
    pearl-duplication: true
@@ -128,21 +127,9 @@ networking:
    # This makes protocol switching asynchronous during login, which reduces global region
    # blocking and can improve login and configuration phase performance during player join
    async-protocol-switch: true
-   # The maximum bytes that can be sent by the server in a single packet to a player before
-   # kicking them
-   maximum-packet-bytes: 8388608
-   # This disables Papers overflow fallback for large container packets being sent to the
-   # client. This means that if the container data is too large, it will kick the player if
-   # they attempt to open a container with contents larger than the max packet byte size
-   disable-paper-packet-overflow-container-fix: false
-   # The disconnect reason sent to the client when the server attempted to send a packet that
-   # exceeded the max packet size
-   packet-too-large-disconnect-reason: "Clientbound packet exceeded max packet bytes"
    purpur-alternative-keepalive: false
 # The server mod name displayed in server listings and client info
 server-mod-name: "Canvas"
-# Restores and fixes Vanilla Ender Pearl behavior, broken by Folia
-restore-vanilla-ender-pearl-behavior: true
 # Folia's portaling rewrite makes the world loading screen not display on the client
 # properly, and instead shows an empty void. With this enabled, Canvas will display the
 # proper world loading screen
@@ -186,7 +173,31 @@ chat:
 logs:
    # Auto-removes old log files from the "logs" directory
    enable-log-cleaner: true
-   # The amount of the time unit until the log file is marked for deletion
-   length: 30
-   # The type of time unit to use when comparing how old the file is to the current time
-   unit: "DAYS"
+   # The amount of the time since the log file was last edited until it will be deleted
+   cleaner-time-span: "30d"
+   # Logs when a pearl is saved or loaded from Canvas' pearl save rewrite
+   log-ender-pearl-rewrite-actions: false
+enchant-command:
+   # Uncaps the max level, allowing you to enchant to any level, even beyond the max
+   uncap-max-level: false
+   # Allows setting enchants on items that normally do not support that enchantment
+   allow-enchants-on-unsupported-items: false
+   # Allows setting enchants on items with incompatible enchants. e.g. Protection & Blast
+   # Protection
+   allow-enchanting-with-incompatible-enchants: false
+disable-locator-bar-in-all-worlds: false
+# Folia breaks a lot of autosave features. Canvas restores these, and this section allows
+# more specific configuration of autosave functionalities
+autosave:
+   # The time frequency of how often to autosave the enabled selection. Default is 5 minutes to
+   # match upstream
+   autosave-frequency: "10m"
+   autosave-scoreboards: true
+   autosave-stopwatches: true
+   autosave-pearls: true
+   autosave-custom-boss-events: true
+   autosave-time: true
+   autosave-maps: true
+   autosave-weather: true
+   autosave-gamerules: true
+   autosave-players: true
