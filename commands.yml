@@ -12,10 +12,10 @@ command-block-overrides: []
 ignore-vanilla-permissions: false
 aliases:
   gmsp:
-  - gamemode spectator-
+  - gamemode spectator $1-
   gmc:
-  - gamemode creative-
+  - gamemode creative $1-
   gms:
-  - gamemode survival-
+  - gamemode survival $1-
   gma:
-  - gamemode adventure-
+  - gamemode adventure $1-

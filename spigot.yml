@@ -169,7 +169,7 @@ stats:
   forced-stats: {}
 commands:
   tab-complete: 0
-  send-namespaced: true # Turn off after Development!
+  send-namespaced: true
   silent-commandblock-console: false
   replace-commands: {}
   log: true
