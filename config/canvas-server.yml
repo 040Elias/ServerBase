@@ -16,7 +16,8 @@
 # performance benefits Canvas provides.
 #
 # If you have questions about certain configuration options
-# please reach out in our discord
+# please reach out in our discord. As a general rule, if you
+# don't know what a certain option does, DO NOT TOUCH IT.
 # https://canvasmc.io/discord
 
 region-scheduler:
@@ -91,6 +92,10 @@ chunk-system:
       # Structures, but you lose parity with Vanilla seeds on the layout of the structure
       deduplicate-shuffled-template-pool-element-list: true
       enable: true
+   # Treasure map locating is a very expensive operation, leading to most production servers
+   # disabling it. This option tries to optimize the treasure map initial search to make this
+   # less expensive on item creation
+   optimize-treasure-map-locating: false
 vanilla-fixes:
    mc298464: true # Fixes a Memory Leak
    mc223153: false # Sound Issue with Block of Raw Copper
@@ -108,9 +113,7 @@ vanilla-fixes:
    mc30391: false # Chickens, blazes and the wither emit particles when landing from a height, despite falling slowly
    mc183990: false # Group AI of some mobs breaks when their target dies
    mc136249: false # Wearing boots enchanted with depth strider decreases the strength of the riptide enchantment
-   # There is a Vanilla bug where in-flight pearls are duplicated at shutdown. This fixes that
-   # when the option "restoreVanillaEnderPearlBehavior" is enabled alongside this.
-   pearl-duplication: true
+   mc261810: false # Using commands with a WitherSkull end up with: The entity UUID provided is in an invalid format.
 networking:
    # The ClientboundSetEntityMotionPacket, also known as the entity velocity packet, can often
    # consume major amounts of network usage, often being up to 60% on large production servers
