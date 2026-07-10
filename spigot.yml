@@ -13,27 +13,27 @@
 settings:
   debug: false
   bungeecord: false
+  player-shuffle: 0
+  sample-count: 0
+  user-cache-size: 1000
+  moved-wrongly-threshold: 0.0625
+  moved-too-quickly-multiplier: 10.0
+  save-user-cache-on-stop-only: true
+  netty-threads: 4
+  attribute:
+    maxAbsorption:
+      max: 2048.0
+    maxHealth:
+      max: 1024.0
+    movementSpeed:
+      max: 1024.0
+    attackDamage:
+      max: 2048.0
   timeout-time: 100
   restart-on-crash: true
   restart-script: ./start.sh
   log-villager-deaths: false
   log-named-deaths: true
-  sample-count: 0
-  player-shuffle: 0
-  user-cache-size: 1000
-  save-user-cache-on-stop-only: true
-  netty-threads: 4
-  moved-wrongly-threshold: 0.0625
-  moved-too-quickly-multiplier: 10.0
-  attribute:
-    maxAbsorption:
-      max: 2048.0
-    maxHealth:
-      max: 2048.0
-    movementSpeed:
-      max: 1024.0
-    attackDamage:
-      max: 2048.0
 messages:
   whitelist: §cYou are not whitelisted on this server!
   unknown-command: §cThis command doesn't exist.
@@ -41,43 +41,38 @@ messages:
   outdated-client: §cOutdated client! Please use {0}
   outdated-server: §cOutdated server! I'm still on {0}
   restart: §cServer is restarting
-advancements:
-  disable-saving: false
-  disabled:
-  - minecraft:story/disabled
 world-settings:
   default:
     below-zero-generation-in-existing-chunks: false
-    item-despawn-rate: 6000
+    zombie-aggressive-towards-villager: true
+    enable-zombie-pigmen-portal-spawns: true
+    view-distance: default
+    simulation-distance: default
+    ticks-per:
+      hopper-transfer: 8
+      hopper-check: 1
+    hopper-amount: 12
+    hopper-can-load-chunks: false
+    hunger:
+      jump-walk-exhaustion: 0.05
+      jump-sprint-exhaustion: 0.2
+      combat-exhaustion: 0.1
+      regen-exhaustion: 6.0
+      swim-multiplier: 0.01
+      sprint-multiplier: 0.1
+      other-multiplier: 0.0
+    merge-radius:
+      item: 1.5
+      exp: 3.0
     mob-spawn-range: 4
+    item-despawn-rate: 6000
     end-portal-sound-radius: 0
-    wither-spawn-sound-radius: 0
-    nerf-spawner-mobs: true
     arrow-despawn-rate: 300
     trident-despawn-rate: 1200
-    hanging-tick-frequency: 100
-    seed-village: 63022090
-    seed-desert: 97243278
-    seed-igloo: 17045008
-    seed-jungle: 67803035
-    seed-swamp: 59493149
-    seed-monument: 94495392
-    seed-shipwreck: 73467304
-    seed-ocean: 16052138
-    seed-outpost: 66352561
-    seed-endcity: 72116786
-    seed-slime: 83321905
-    seed-nether: 86169275
-    seed-mansion: 15211335
-    seed-fossil: 32659666
-    seed-portal: 51154903
-    seed-ancientcity: 91105113
-    seed-trailruins: 63704670
-    seed-trialchambers: 74792673
-    seed-buriedtreasure: 52906478
-    seed-mineshaft: 78148208
-    seed-stronghold: 46077689
-    dragon-death-sound-radius: 0
+    wither-spawn-sound-radius: 0
+    nerf-spawner-mobs: true
+    thunder-chance: 100000
+    unload-frozen-chunks: false
     growth:
       cactus-modifier: 100
       cane-modifier: 100
@@ -101,15 +96,6 @@ world-settings:
       cavevines-modifier: 100
       glowberry-modifier: 100
       pitcherplant-modifier: 100
-    thunder-chance: 100000
-    max-tnt-per-tick: 20
-    entity-tracking-range:
-      players: 96
-      animals: 64
-      monsters: 64
-      misc: 32
-      display: 32
-      other: 32
     entity-activation-range:
       animals: 32
       monsters: 32
@@ -136,31 +122,45 @@ world-settings:
       villagers-active-for-panic: true
       tick-inactive-villagers: false
       ignore-spectators: true
+    dragon-death-sound-radius: 0
+    seed-village: 63022090
+    seed-desert: 97243278
+    seed-igloo: 17045008
+    seed-jungle: 67803035
+    seed-swamp: 59493149
+    seed-monument: 94495392
+    seed-shipwreck: 73467304
+    seed-ocean: 16052138
+    seed-outpost: 66352561
+    seed-endcity: 72116786
+    seed-slime: 83321905
+    seed-nether: 86169275
+    seed-mansion: 15211335
+    seed-fossil: 32659666
+    seed-portal: 51154903
+    seed-ancientcity: 91105113
+    seed-trailruins: 63704670
+    seed-trialchambers: 74792673
+    seed-buriedtreasure: 52906478
+    seed-mineshaft: 78148208
+    seed-stronghold: 46077689
+    entity-tracking-range:
+      players: 96
+      animals: 64
+      monsters: 64
+      misc: 32
+      display: 32
+      other: 32
+    hanging-tick-frequency: 100
     max-tick-time:
       tile: 50
       entity: 50
-    unload-frozen-chunks: true
-    zombie-aggressive-towards-villager: true
-    enable-zombie-pigmen-portal-spawns: true
-    hunger:
-      jump-walk-exhaustion: 0.05
-      jump-sprint-exhaustion: 0.2
-      combat-exhaustion: 0.1
-      regen-exhaustion: 6.0
-      swim-multiplier: 0.01
-      sprint-multiplier: 0.1
-      other-multiplier: 0.0
-    merge-radius:
-      exp: 3.0
-      item: 1.5
-    ticks-per:
-      hopper-transfer: 8
-      hopper-check: 1
-    hopper-amount: 12
-    hopper-can-load-chunks: false
-    view-distance: default
-    simulation-distance: default
+    max-tnt-per-tick: 20
     verbose: false
+advancements:
+  disable-saving: false
+  disabled:
+  - minecraft:story/disabled
 players:
   disable-saving: false
 config-version: 13
@@ -169,9 +169,9 @@ stats:
   forced-stats: {}
 commands:
   tab-complete: 0
-  send-namespaced: true # Turn off after Development!
-  silent-commandblock-console: false
-  replace-commands: {}
+  send-namespaced: true
   log: true
+  silent-commandblock-console: false
   spam-exclusions: {}
+  replace-commands: {}
   enable-spam-exclusions: false

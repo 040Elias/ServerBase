@@ -95,9 +95,9 @@ misc:
 packet-limiter:
   all-packets:
     action: KICK
-    interval: 7.0
-    max-packet-rate: 500.0
-  kick-message: <red>You exceded the packet rate...
+    interval: 5.0
+    max-packet-rate: 450.0
+  kick-message: <red>You exceded the packet Limit!
   overrides:
     minecraft:place_recipe:
       action: DROP
@@ -113,9 +113,9 @@ proxies:
   velocity:
     enabled: true
     online-mode: true
-    secret: 'YOUR_VELOCITY_SECRET_HERE'
+    secret: 'CHANGEME'
 scoreboards:
-  save-empty-scoreboard-teams: false
+  save-empty-scoreboard-teams: true
   track-plugin-scoreboards: false
 spam-limiter:
   incoming-packet-threshold: 300

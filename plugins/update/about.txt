@@ -1,0 +1,26 @@
+This file exists to document the purpose of this folder and to keep it tracked in Git.
+
+This server follows the official PaperMC plugin update workflow.
+
+Instead of replacing plugin JAR files directly inside the plugins/ directory,
+updated versions are first placed into the plugins/update/ folder. On the next
+server restart, Paper replaces the old plugin versions with the new ones
+automatically.
+
+According to the official PaperMC documentation, this approach:
+- Avoids replacing plugin JARs while the server is running.
+- Applies all plugin updates together on the next restart.
+- Allows Paper itself and plugins to be updated in the same restart, without
+  additional downtime.
+
+Note: This workflow is a core Paper/Bukkit feature. It is expected to work
+unchanged on Canvas, since Canvas inherits the plugin-loading layer from
+Paper via Folia. This has not been separately verified against official
+Canvas documentation.
+
+Usage:
+1. Download the updated plugin JAR.
+2. Place it in this folder (plugins/update/).
+3. Restart the server. Do not modify or remove files outside this folder.
+
+Reference: https://docs.papermc.io/paper/updating/
