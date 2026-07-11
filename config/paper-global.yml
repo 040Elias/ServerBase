@@ -22,7 +22,7 @@ anticheat:
         dont-obfuscate:
         - minecraft:lodestone_tracker
         sanitize-count: true
-      enable-item-obfuscation: false
+      enable-item-obfuscation: true
       model-overrides:
         minecraft:elytra:
           also-obfuscate: []
@@ -55,7 +55,7 @@ commands:
 console:
   enable-brigadier-completions: true
   enable-brigadier-highlighting: true
-  has-all-permissions: false
+  has-all-permissions: true
 item-validation:
   book:
     author: 8192
@@ -71,12 +71,11 @@ logging:
   deobfuscate-stacktraces: true
 messages:
   kick:
-    authentication-servers-down: <lang:multiplayer.disconnect.authservers_down>
-    connection-throttle: Connection throttled! Please wait before reconnecting.
-    flying-player: <lang:multiplayer.disconnect.flying>
-    flying-vehicle: <lang:multiplayer.disconnect.flying>
-  no-permission: <red>I'm sorry, but you do not have permission to perform this command.
-    Please contact the server administrators if you believe that this is in error.
+    authentication-servers-down: <red>The Authentication Servers seem to be unreachable. Try restarting your Game or retry shortly.
+    connection-throttle: <red>Please wait a moment before reconnecting!
+    flying-player: <red>Flying isn't enabled!\n<yellow>This can be false on high ping!
+    flying-vehicle: <red>Flying isn't enabled!\n<yellow>This can be false on high ping!
+  no-permission: <red>You don't have permission to do this!
   use-display-name-in-quit-message: false
 misc:
   chat-threads:
@@ -88,7 +87,7 @@ misc:
   fix-far-end-terrain-generation: true
   load-permissions-yml-before-plugins: true
   max-joins-per-tick: 5
-  prevent-negative-villager-demand: false
+  prevent-negative-villager-demand: true
   region-file-cache-size: 256
   send-full-pos-for-item-entities: false
   strict-advancement-dimension-check: false
@@ -98,9 +97,9 @@ misc:
 packet-limiter:
   all-packets:
     action: KICK
-    interval: 7.0
-    max-packet-rate: 500.0
-  kick-message: <red><lang:disconnect.exceeded_packet_rate>
+    interval: 5.0
+    max-packet-rate: 450.0
+  kick-message: <red>You exceded the packet Limit!
   overrides:
     minecraft:place_recipe:
       action: DROP
@@ -114,9 +113,9 @@ proxies:
     online-mode: true
   proxy-protocol: false
   velocity:
-    enabled: false
+    enabled: true
     online-mode: true
-    secret: ''
+    secret: 'CHANGEME'
 scoreboards:
   save-empty-scoreboard-teams: true
   track-plugin-scoreboards: false
@@ -131,7 +130,7 @@ spark:
   enabled: true
 threaded-regions:
   grid-exponent: 4
-  scheduler: EDF
+  scheduler: AFFINITY
   threads: -1
 unsupported-settings:
   allow-headless-pistons: false
