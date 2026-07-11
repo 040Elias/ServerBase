@@ -26,9 +26,9 @@
 		/* Enables work stealing/task-thread affinity. This will try and attempt to keep tasks on the same tick thread
 		   to improve performance. If this is enabled, and the task misses its deadline by 'stealThresholdMillis', it can
 		   be taken by another tick thread to be run. */
-		"enableWorkStealing": false,
+		"enableWorkStealing": true,
 		// Enables the affinity scheduler to run intermediate tasks while waiting for the deadline of the currently owned tick
-		"enableMidTickTasks": false,
+		"enableMidTickTasks": true,
 		/* The default tick rate for the scheduler. Vanilla is 20, the game will run faster or slower depending on how you adjust this value
 		   Note this should really only be used for debugging purposes and for custom environments that require this change */
 		"defaultTickRate": 20.0
@@ -45,21 +45,21 @@
 		   - VANILLA - just normal vanilla, no changes
 		   - DISABLED - disables fluid post processing completely
 		   - FILTERED - applies a rough filter to filter out fluids that are definitely not going to flow */
-		"fluidPostProcessingMode": "VANILLA",
+		"fluidPostProcessingMode": "FILTERED",
 		/* Whether to turn fluid postprocessing into scheduled tick
 		   Fluid post-processing is very expensive when loading in new chunks, and this can affect
 		   MSPT significantly. This option delays fluid post-processing to scheduled tick to hopefully mitigate this issue. */
-		"fluidPostProcessingToScheduledTick": false,
+		"fluidPostProcessingToScheduledTick": true,
 		// Whether to enable aquifer optimizations to accelerate overworld worldgen
-		"optimizeAquifer": false,
+		"optimizeAquifer": true,
 		// Whether to enable End Biome Cache to accelerate The End worldgen
-		"useEndBiomeCache": false,
+		"useEndBiomeCache": true,
 		// The cache capacity for the end biome cache. Only works with 'useEndBiomeCache' enabled
 		"endBiomeCacheCapacity": 1024,
 		// Whether to enable Beardifier optimizations to accelerate world generation
-		"optimizeBeardifier": false,
+		"optimizeBeardifier": true,
 		// Whether to enable optimizations to the noise based chunk generator
-		"optimizeNoiseGeneration": false,
+		"optimizeNoiseGeneration": true,
 		"structures": {
 			/* Whether to use an alternative strategy to make structure layouts generate slightly faster than
 			   the default optimization the 'optimizeStructureGen' option has for template pool weights. This alternative strategy works by
@@ -71,28 +71,28 @@
 			   
 			   Pros: Get a bit more performance from high weight Template Pool Structures.
 			   Cons: Loses parity with vanilla seeds on the layout of the structure. (Structure layout is not broken, just different) */
-			"deduplicateShuffledTemplatePoolElementList": false,
+			"deduplicateShuffledTemplatePoolElementList": true,
 			// Enables a port of the mod StructureLayoutOptimizer, which optimizes generation of Jigsaw Structures and NBT pieces
-			"optimizeStructureGen": false
+			"optimizeStructureGen": true
 		}
 	},
 	"networking": {
 		/* The ClientboundSetEntityMotionPacket can often cause high network (Netty) usage and consumes (on larger production servers)
 		   up to 60% of your network usage. Filtering should have no side effects visually on the client. If you find any, report to Canvas */
-		"filterClientboundSetEntityMotionPacket": false,
+		"filterClientboundSetEntityMotionPacket": true,
 		// Filters entity movement packets to reduce the amount of useless move packets sent
-		"reduceUselessMovePackets": false,
+		"reduceUselessMovePackets": true,
 		// When enabled, hides flames on entities with fire resistance
 		"hideFlamesOnEntitiesWithFireResistance": false,
 		// When enabled, hides flames on entities with invisibility
 		"hideFlamesOnEntitiesWithInvisibility": false,
 		/* Optimizes player information packet sending by splitting players
 		   into buckets to be sent to spread out the list tick */
-		"optimizePlayerListTicking": false,
+		"optimizePlayerListTicking": true,
 		// The interval in ticks for how often the server will tick the playerlist buckets
 		"playerInfoSendInterval": 600,
 		// This option makes protocol switching asynchronous, reducing global region blocking and improving login and configuration performance.
-		"asyncProtocolSwitch": false,
+		"asyncProtocolSwitch": true,
 		// The maximum bytes that can be sent by the server in a single packet to a player before kicking them
 		"maximumPacketBytes": 8388608,
 		/* Paper implements an overflow fallback for container contents packets to the client, splitting the load into individual packets
@@ -103,19 +103,19 @@
 		"packetTooLargeDisconnectReason": "Clientbound packet exceeded max packet bytes"
 	},
 	// Check if a cactus can survive before growing. Heavily optimizes cacti farms
-	"cactusCheckSurvivalBeforeGrowth": false,
+	"cactusCheckSurvivalBeforeGrowth": true,
 	// Whether to cache expensive CraftEntityType#minecraftToBukkit call
-	"enableCachedMTBEntityTypeConvert": false,
+	"enableCachedMTBEntityTypeConvert": true,
 	// Enables creation of tile entity snapshots on retrieving blockstates
 	"tileEntitySnapshotCreation": false,
 	// Determines if end crystals should explode in a chain reaction, similar to how tnt works when exploded
-	"chainEndCrystalExplosions": false,
+	"chainEndCrystalExplosions": true,
 	// Disables falling on farmland turning it back to dirt
 	"disableFarmlandTrampling": false,
 	// Makes farmland always moist, never drying out, even if it isn't near water
 	"farmlandAlwaysMoist": false,
 	// Disables Minecraft Chat Signing to prevent player reporting
-	"enableNoChatReports": false,
+	"enableNoChatReports": true,
 	// Disables Minecraft chat verification ordering
 	"disableChatVerificationOrder": false,
 	// Enables snowballs being able to knockback players
@@ -131,11 +131,11 @@
 	   - ONLY_PUSHABLE_PLAYERS_SMALL - only players are pushable by entities, we search in a small radius(2 chunks)
 	   for colliding players. This is used for if the server will have no large entities exceeding 2 chunks of width
 	   - NO_COLLISIONS - all entities have no collisions */
-	"entityCollisionMode": "VANILLA",
+	"entityCollisionMode": "NO_COLLISIONS",
 	"fixes": {
 		/* Fixes MC-298464 - https://bugs.mojang.com/browse/MC/issues/MC-298464
 		   Memory leak in hoglin farm due to CHANGED_DIMENSION entity removal */
-		"mc298464": false,
+		"mc298464": true,
 		/* Fixes MC-223153 - https://bugs.mojang.com/browse/MC/issues/MC-223153
 		   Block of Raw Copper uses stone sounds instead of copper sounds */
 		"mc223153": false,
@@ -171,7 +171,7 @@
 		"mc121706": false,
 		/* Fixes MC-119754 - https://bugs.mojang.com/browse/MC/issues/MC-119754
 		   Firework boosting on elytra continues in spectator mode */
-		"mc119754": false,
+		"mc119754": true,
 		/* Fixes MC-100991 - https://bugs.mojang.com/browse/MC/issues/MC-100991
 		   Killing entities with a fishing rod doesn't count as a kill */
 		"mc100991": false,
@@ -194,7 +194,7 @@
 		   This fixes that, so that when 'restoreVanillaEnderPearlBehavior' is enabled, it unloads the pearl during shutdown
 		   so that the duplication doesn't occur. With that configuration disabled, it just loads the pearl from the
 		   chunk like normal. */
-		"pearlDuplication": false
+		"pearlDuplication": true
 	},
 	/* Enables better XP orb merging and removes the XP pickup delay
 	   Can be very useful for heavy XP farms
@@ -204,7 +204,7 @@
 	   criteria for orbs to be merged, and instead of increasing the count, we
 	   increase the value of the orb. This way orbs are collected instantly, there
 	   will be no "ghost orbs", and all xp merging is as efficient as possible */
-	"fastOrbs": false,
+	"fastOrbs": true,
 	/* Enables a regionized TPS-Bar implementation for Canvas
 	   This function is per-player, with this as a global setting to disable it
 	   To enable the tps-bar per-player, use the '/tpsbar' command */
@@ -227,7 +227,7 @@
 		// The amount of rows for the barrel block
 		"barrelRows": 3,
 		// Whether to use 6 rows for the player ender chest, rather than the normal 3
-		"enderChestSixRows": false,
+		"enderChestSixRows": true,
 		/* Whether to use a permission based system for defining the size of ender chests per player
 		   Valid permissions:
 		   - purpur.enderchest.rows.six
@@ -265,7 +265,7 @@
 	/* Optimizes the suffocation check by selectively skipping the check in a way
 	   that still appears vanilla. This should be left enabled on most servers, but
 	   is provided as a configuration option if the vanilla deviation is undesirable */
-	"enableSuffocationOptimization": false,
+	"enableSuffocationOptimization": true,
 	/* Defines the inaccuracy of skeleton bow shots. 14 being vanilla,
 	   100+ being absurdly stupidly and somewhat hilariously inaccurate
 	   
@@ -334,18 +334,18 @@
 	// It is recommended to enable these options, as the client displays most of these particles already, so the server-side particle logic is not needed
 	"particles": {
 		// Disables entity sprinting particles
-		"disableSprintParticles": false,
+		"disableSprintParticles": true,
 		/* Disables entity fall particles
 		   This is handled on the server-side, not the client, so this will cause visual deviations from Vanilla */
 		"disableFallParticles": false,
 		// Disables entity death particles
-		"disableDeathParticles": false,
+		"disableDeathParticles": true,
 		// Disables effect particles
-		"disableEffectParticles": false,
+		"disableEffectParticles": true,
 		// Disables entity water splash particles
-		"disableWaterSplashParticles": false,
+		"disableWaterSplashParticles": true,
 		// Disables bubble columns particles
-		"disableBubbleColumnParticles": false,
+		"disableBubbleColumnParticles": true,
 		/* Disables new combat particles
 		   This is handled on the server-side, not the client, so this will cause visual deviations from Vanilla */
 		"disableNewCombatParticles": false
@@ -367,7 +367,7 @@
 	// The server mod name displayed in server listings and client info
 	"serverModName": "Canvas",
 	// Restores Vanilla ender pearl behavior to match Paper, which is disabled in Folia.
-	"restoreVanillaEnderPearlBehavior": false,
+	"restoreVanillaEnderPearlBehavior": true,
 	/* Folia's portaling rewrite makes the world loading screen not display on the client, and shows more of an
 	   empty void. With this option enabled, Canvas will make the client display this screen which can be more visually appealing */
 	"displayWorldLoadScreenForPortaling": true
