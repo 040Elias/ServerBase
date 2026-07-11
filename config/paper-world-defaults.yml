@@ -69,7 +69,7 @@ collisions:
   allow-vehicle-collisions: true
   fix-climbing-bypassing-cramming-rule: false
   max-entity-collisions: 8
-  only-players-collide: false
+  only-players-collide: true
 command-blocks:
   force-follow-perm-level: true
   permissions-level: 2
@@ -241,7 +241,7 @@ environment:
   max-block-ticks: 65536
   max-fluid-ticks: 65536
   nether-ceiling-void-damage-height: disabled
-  optimize-explosions: false
+  optimize-explosions: true
   portal-create-radius: 16
   portal-search-radius: 128
   portal-search-vanilla-dimension-scaling: true
@@ -267,8 +267,8 @@ fixes:
   tnt-entity-height-nerf: disabled
 hopper:
   cooldown-when-full: true
-  disable-move-event: false
-  ignore-occluding-blocks: false
+  disable-move-event: true
+  ignore-occluding-blocks: true
 lootables:
   auto-replenish: false
   max-refills: -1
@@ -295,9 +295,9 @@ misc:
   disable-sprint-interruption-on-attack: false
   legacy-ender-pearl-behavior: false
   max-leash-distance: default
-  redstone-implementation: VANILLA
+  redstone-implementation: ALTERNATE_CURRENT
   show-sign-click-command-failure-msgs-to-player: false
-  update-pathfinding-on-block-update: true
+  update-pathfinding-on-block-update: false
 scoreboards:
   allow-non-player-entities-on-scoreboards: true
   use-vanilla-world-scoreboard-name-coloring: false
@@ -308,8 +308,8 @@ tick-rates:
     villager:
       validatenearbypoi: -1
   container-update: 1
-  dry-farmland: 1
-  grass-spread: 1
+  dry-farmland: 3
+  grass-spread: 4
   mob-spawner: 1
   sensor:
     villager:
